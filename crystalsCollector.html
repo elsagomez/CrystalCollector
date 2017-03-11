@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trigger Clicked</title>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    
+
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron titulo">
+            <h1 class="text-center">Emojis Collector</h1>
+    </header>
+    <div class="panel panel-default instructions">
+        <p>1. You will be given a random number at the start of the game.</p>
+        <p>2. There are other crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+        <p>3. You win the game by matching your total score to a random number, you will lose the game if your total score goes above the random number</p>
+        <p>4. The value of each crystal is hidden from you until you click on it.</p>
+        <p>5. Each time when the game starts, the game will change the values of the crystal.</p>
+    </div>
+
+    <div class="gameScore">
+        <div class= "random" id="randomNum"></div>
+        <div class="score">
+            <h4 id="winsScore"></h4>
+            <h4 id="losesScore"></h4>
+        </div>
+    </div>
+
+
+    
+        <div class="panel panel-default crystals">
+            <img src="wink.png" id="wink" style="width:100px;height:100px;" ">
+            <img src="drop.png " id="drop" style="width:100px;height:100px; "">
+            <img src="heart.png" id="heart" style="width:100px;height:100px;" ">
+            <img src="mad.png " id="mad" style="width:100px;height:100px; "">
+        </div>
+ 
+         <div class="row">
+        <div class="panel panel-default totalMsg">Your total score is:</div>
+        <div class="panel panel-default score" id="totalScore">
+        </div>
+
+    </div>
+
+            <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var wins = 0;
+            var loses = 0;
+
+            var totalScore = 0;
+            var randomNo = 0
+
+            var winkNum = 0
+            var dropNum = 0
+            var heartNum = 0
+            var greenNum = 0
+
+
+            function restart() {
+
+                totalScore = 0
+                $("#totalScore").text(0);
+
+                var randomNo = 0;
+                $("#randomNum").text(0);
+
+                var winkNum = 0
+                var dropNum = 0
+                var heartNum = 0
+                var greenNum = 0
+                game()
+
+            }
+
+            function score() {
+                if (totalScore === numRandom) {
+                    alert("You won!");
+                    wins++;
+                    restart();
+                }
+                if (totalScore > numRandom) {
+                    alert("You lose!");
+                    loses++;
+                    restart();
+                }
+            }
+
+
+            function game() {
+
+                var randomNo = Math.floor(Math.random() * 90 + 10);
+                numRandom = randomNo; //create local variable so it does not take the 0 from the global scope
+                $("#randomNum").text(numRandom);
+                console.log(numRandom);
+
+                // console.log(randomNo);
+                //create the random numbers locally in the function
+                var winkNum = Math.floor(Math.random() * 9 + 1);
+                var dropNum = Math.floor(Math.random() * 9 + 1);
+                var heartwNum = Math.floor(Math.random() * 9 + 1);
+                var madNum = Math.floor(Math.random() * 9 + 1);
+
+
+                $("#winsScore").text("Wins: " + wins);
+                $("#losesScore").text("Loses: " + loses);
+
+
+
+                $("#wink").on("click", function() {
+                    totalScore = totalScore + winkNum;
+                    console.log("wink number is: " + winkNum);
+                    console.log("User total: " + totalScore);
+                    $("#totalScore").text(totalScore);
+                    score();
+                })
+
+
+                $("#drop").on("click", function() {
+                    totalScore = totalScore + dropNum;
+                    console.log("drop number is: " + dropNum);
+                    console.log("User total: " + totalScore);
+                    $("#totalScore").text(totalScore);
+                    score();
+
+                })
+
+                $("#heart").on("click", function() {
+                    totalScore = totalScore + heartNum;
+                    console.log("heart number is: " + heartNum);
+                    console.log("User total: " + totalScore);
+                    $("#totalScore").text(totalScore);
+                    score();
+                })
+
+                $("#mad").on("click", function() {
+                    totalScore = totalScore + madNum;
+                    console.log("mad number is: " + madNum);
+                    console.log("User total: " + totalScore);
+                    $("#totalScore").text(totalScore);
+                    score();
+                })
+
+            }
+
+            game()
+        });
+
+
+        // si los botones se comportan igual, podemos agregarlos todos en una misma funcion de onclick y despues agregar funciones condicionales if para diferenciar cual ha sido clickeado.
+        //jquery es solo usado para manipular elementos en el DOM, todo lo que sucede en los condicionales if es en javascript.
+        </script>
+</body>
+
+</html>

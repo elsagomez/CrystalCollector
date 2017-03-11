@@ -1,0 +1,66 @@
+body {
+  font-family: Gloria Hallelujah;
+  font-size: 18px;
+  margin:10px;
+  color: #777;
+  line-height: 34px;
+  background-size: 100%;
+
+}
+
+.titulo{
+	color: pink;
+
+}
+
+
+
+.instructions{
+	width: 75%;
+	margin-right: 100px;
+	margin-left: 100px;
+}
+.crystals{
+	width: 75%;
+	margin-right: 100px;
+	margin-left: 100px;
+	margin-top: 20px;
+	padding-left: 200px;
+}
+
+.totalMsg{
+	width: 75%;
+	margin-right: 100px;
+	margin-left: 100px;
+}
+
+.score{
+	width: 75%;
+	margin-right: 100px;
+	margin-left: 100px;
+	border: solid 2px gray;
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: bold;
+	background-color: pink;
+}
+
+.random{
+	width: 75%;
+	height: 100%;
+	margin-right: 100px;
+	margin-left: 100px;
+	font-size: 24px;
+	font-weight: bold;
+	border: solid 2px gray;
+}
+
+.totalScore{
+	width: 75%;
+	margin-right: 100px;
+	margin-left: 100px;
+	border: solid 2px gray;
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: bold;
+	background-color: pink;
